@@ -1,0 +1,10 @@
+#!/usr/bin/python
+from sklearn.dummy import DummyClassifier
+from sklearn.metrics import confusion_matrix
+
+# Negative class (0) is most frequent
+dummy_majority = DummyClassifier(strategy = 'most_frequent').fit(X_train, y_train)
+y_majority_predicted = dummy_majority.predict(X_test)
+confusion = confusion_matrix(y_test, y_majority_predicted)
+
+print('Most frequent class (dummy classifier)\n', confusion)
